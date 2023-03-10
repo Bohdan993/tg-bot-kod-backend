@@ -8,7 +8,7 @@ const app = express();
 
 const PORT = process.env.PORT || 5000;
 const corsOptions = {
-    origin: 'http://localhost:3000',
+    origin: 'https://tg-bot-kod-git-working-bohdan993.vercel.app/',
     optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
 }
 
