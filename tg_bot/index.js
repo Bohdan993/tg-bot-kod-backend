@@ -29,6 +29,11 @@ async function messageHandle(msg){
 }
 
 async function checkMessage(msg, chatId) {
+  
+  if(msg?.via_bot?.username === 'kodbarbershopbot') {
+    return;
+  }
+
   switch(msg?.text) {
     case COMMANDS.NEWSESSION : {
       await sendMessage(chatId);
