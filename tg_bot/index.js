@@ -1,5 +1,3 @@
-require('dotenv').config();
-// const {connectDB} = require('../db');
 const TelegramBot = require('node-telegram-bot-api');
 const token = process.env.BOT_TOKEN;
 const bot = new TelegramBot(token, {polling: true});
@@ -21,7 +19,7 @@ const MESSAGES = {
 
 // Listen for any kind of message. There are different kinds of
 // messages.
-bot.on('message', messageHandle);
+
 
 async function messageHandle(msg){
   const chatId = msg.chat.id;
@@ -33,7 +31,7 @@ async function messageHandle(msg){
 async function checkMessage(msg, chatId) {
   switch(msg?.text) {
     case COMMANDS.NEWSESSION : {
-      await start(chatId);
+      await sendMessage(chatId);
       break;
     }
     default:{
@@ -43,8 +41,7 @@ async function checkMessage(msg, chatId) {
   }
 }
 
-async function start(chatId) {
-  
+async function sendMessage(chatId) {
   await bot.sendMessage(chatId, MESSAGES.START_NEW_SESSION, {
     reply_markup: {
       inline_keyboard: [
@@ -54,11 +51,9 @@ async function start(chatId) {
   });
 }
 
-// async function run(){
-//   await connectDB();
-// }
-
-// run();
+function start(){
+  bot.on('message', messageHandle);
+}
 
 
 // setTimeout(async function notifyUser(){
@@ -95,3 +90,8 @@ async function start(chatId) {
 // }
 
 // sendNotification([574082184, 57408218450048, 57408218408044]);
+
+
+module.exports = {
+  start
+}

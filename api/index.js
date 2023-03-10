@@ -1,8 +1,6 @@
-require('dotenv').config();
 const express = require("express");
 const bodyParser = require('body-parser');
 const cors = require('cors');
-const {connectDB} = require('../db');
 const tgRoute = require('./routes/tg');
 const webAppRoute = require('./routes/web-app');
 const app = express();
@@ -20,20 +18,14 @@ app.use('/api/tg-result', tgRoute);
 app.use('/api/web-app-result', webAppRoute)
 
 
-async function start(){
-    try{
-        // await connectDB();
-
-        app.listen(PORT, () => {
-            console.log(`Server running on port ${PORT}`);
-        });
-    } catch(err) {
-        console.error(err);
-    }
+function start(){
+    app.listen(PORT, () => {
+        console.log(`Server running on port ${PORT}`);
+    });
 }
 
 
-start();
+module.exports = {
+    start
+}
 
-  
-// run();

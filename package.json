@@ -8,6 +8,8 @@
     "dev:api": "nodemon api/index.js",
     "start:api": "node api/index.js",
     "start:bot": "node tg_bot/index.js",
+    "dev": "nodemon index.js",
+    "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
