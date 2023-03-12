@@ -45,11 +45,12 @@ const UTILS = {
 }
 
 async function messageHandle(msg){
+  const chatId = msg.chat.id;
+  console.log(msg)
   try {
-    const chatId = msg.chat.id;
-    console.log(msg);
     await checkMessage(msg, chatId);
   } catch(err) {
+    console.log(err);
     await sendMessage(chatId, MESSAGES.ERROR);
   }
 }

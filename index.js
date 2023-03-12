@@ -6,8 +6,8 @@ const {start: apiStart} = require('./api');
 
 async function start(){
     try {
-        await sequelize.authenticate();
-        await sequelize.sync();
+        // await sequelize.authenticate();
+        // await sequelize.sync();
         // await connectDB(); 
         botStart();
         apiStart();
