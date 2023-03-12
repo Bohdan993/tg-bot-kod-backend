@@ -1,12 +1,14 @@
 require('dotenv').config();
-// const {connectDB} = require('../db');
+const sequelize = require('./db');
 const {start: botStart} = require('./tg_bot');
 const {start: apiStart} = require('./api');
 
 
 async function start(){
     try {
-        // await connectDB();
+        await sequelize.authenticate();
+        await sequelize.sync();
+        // await connectDB(); 
         botStart();
         apiStart();
 
