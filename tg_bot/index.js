@@ -4,6 +4,7 @@ const token = process.env.BOT_TOKEN;
 const bot = new TelegramBot(token, {polling: true});
 const SETTINGS = {
   // WEB_APP_URL: 'https://tg-bot-kod.vercel.app/'
+    
   WEB_APP_URL: 'https://tg-bot-kod-git-working-bohdan993.vercel.app/',
   TIME_MS: 60 * 60 * 1000,
   SELF_USERNAME: 'kodbarbershopbot',
@@ -46,7 +47,7 @@ const UTILS = {
 
 async function messageHandle(msg){
   const chatId = msg.chat.id;
-  console.log(msg)
+  console.log(msg);
   try {
     await checkMessage(msg, chatId);
   } catch(err) {
@@ -69,7 +70,7 @@ async function checkMessage(msg, chatId) {
         await UsersModel.create({
           chatId,
           name: msg?.from?.first_name || null,
-          lastName: msg?.from?.lastName || null,
+          lastName: msg?.from?.last_name || null,
           userName: msg?.from?.username || null
         });
       } else {
